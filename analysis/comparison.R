@@ -12,7 +12,6 @@
 #                  Scripts found at:
 #                  https://github.com/re3data/using_the_re3data_API/blob/main/re3data_API_certification_by_type.ipynb
 #     FAIRsharing: data is under CC-BY-SA Don't push any output files to Github!
-#                  Run FAIRsharing login credential script first to obtain "hji_login" argument for the below.
 #                  For rest, see API documentation on
 #                  https://fairsharing.org/API_doc
 #                  and

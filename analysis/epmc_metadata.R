@@ -199,7 +199,7 @@ cat("Done.\n")
 cat("Querying Europe PMC for articles with full text and open access... ")
 
 open_full_ids <-
-  select(epmc_search(query = query_string, limit = 25000), 1)
+  select(epmc_search(query = modify_query(query_string), limit = 25000), 1)
 
 cat("Done.\n")
 
@@ -433,7 +433,7 @@ res_text_mined_acc_nums <- resource_metadata %>%
   group_by(hasTMAccessionNumbers) %>%
   summarize(count = n())
 
-res_has_text_minedacc_nums <- res_text_mined_acc_nums %>%
+res_has_text_mined_acc_nums <- res_text_mined_acc_nums %>%
   filter(hasTMAccessionNumbers == "Y") %>%
   select(count)
 res_no_text_mined_acc_nums <- res_text_mined_acc_nums %>%
@@ -447,7 +447,7 @@ summary <- summary %>%
   rbind(
     tibble(
       type = "Text Mined Accession Numbers",
-      resources_yes = res_has_text_minedacc_nums$count,
+      resources_yes = res_has_text_mined_acc_nums$count,
       resources_no = res_no_text_mined_acc_nums$count,
       resources_mixed = res_mixed_text_mined_acc_nums$count,
       articles_yes = has_text_mined_acc_nums$count,
