@@ -518,6 +518,7 @@ def main() -> None:
     args = get_args()
 
     input_df = preprocess_data(args.infile)
+    num_in_rows = len(input_df)
 
     if not os.path.isdir(args.out_dir):
         os.makedirs(args.out_dir)
@@ -531,8 +532,14 @@ def main() -> None:
     predictions = reformat_output(
         deduplicate(predict(model, tokenizer, input_df, device)))
 
+    num_out_rows = len(predictions)
+    num_lost = num_in_rows - num_out_rows
+
     predictions.to_csv(out_file, index=False)
 
+    print(f'At least one name was predicted for {num_out_rows} '
+          f'out of {num_in_rows} input articles. '
+          f'{num_lost} articles were dropped due to no found names.')
     print(f'Done. Saved predictions to {out_file}.')
 
 
