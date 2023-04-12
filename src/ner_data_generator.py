@@ -20,6 +20,8 @@ from inventory_utils.custom_classes import CustomHelpFormatter
 from inventory_utils.wrangling import (concat_title_abstract, split_df,
                                        strip_xml)
 
+pd.options.mode.chained_assignment = None
+
 
 # ---------------------------------------------------------------------------
 class Args(NamedTuple):
